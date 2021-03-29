@@ -1,0 +1,44 @@
+{
+  "name": "backend-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "migrateh": "heroku run knex migrate:latest -a watermyplantsapi",
+    "rollbackh": "heroku run knex migrate:rollback -a watermyplantsapi",
+    "databaseh": "heroku pg:psql -a watermyplantsapi",
+    "seedh": "heroku run knex seed:run -a watermyplantsapi",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+    "deploy": "git push heroku main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/water-my-plants-tt27/backend-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/water-my-plants-tt27/backend-node/issues"
+  },
+  "homepage": "https://github.com/water-my-plants-tt27/backend-node#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "helmet": "^4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.4",
+    "knex-cleaner": "^1.3.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
