@@ -15,8 +15,8 @@ server.use('/api/auth', authRouter);
 server.use('/api/plants', plantsRouter);
 server.use('/api/users', usersRouter);
 
-server.get('/', (res) => {
-  res.json(`Welcome to the water my plants API`);
+server.use('/', (req, res) => {
+  res.json({ message: 'Welcome to the water my plants API' });
 });
 
 module.exports = server;
