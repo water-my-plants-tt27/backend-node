@@ -1,4 +1,5 @@
 const db = require('../../database/dbConfig');
+const { getPlantById } = require('../plants/plants-model');
 
 function getMyPlants(id) {
   return db('my_plants as mp')
@@ -19,13 +20,30 @@ function getMyPlants(id) {
     .join('light as l', 'l.light_id', 'p.light_id');
 }
 
-function getMyPlantById(id) {
-  return db('my_plants').where('my_plant)id', id).first();
+function getMyPlantById(my_plant_id) {
+  return db('my_plants').where('my_plant_id', my_plant_id).first();
 }
 
-async function addMyPlant(plant) {
-  const [id] = await db('my_plants').insert(plant);
+async function addMyPlant(newMyPlant) {
+  const [my_plant_id] = await db('my_plants').insert(newMyPlant, 'my_plant_id');
+  return getMyPlantById(my_plant_id);
+}
+
+async function updateMyPlant(id, updatedPlant) {
+  await db('my_plants').where('my_plant_id', id).update(updatedPlant);
   return getMyPlantById(id);
 }
 
-module.exports = { getMyPlants, getMyPlantById, addMyPlant };
+async function removeMyPlant(id) {
+  const removedMyPlant = await getPlantById(id);
+  await db('my_plants').where('my_plant_id', id).del();
+  return removedMyPlant;
+}
+
+module.exports = {
+  getMyPlants,
+  getMyPlantById,
+  addMyPlant,
+  updateMyPlant,
+  removeMyPlant,
+};

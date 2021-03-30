@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const myPlants = require('./my_plants-model');
 
+// GET - returns all my_plants from a user
 router.get('/:id', (req, res, next) => {
   myPlants
     .getMyPlants(req.params.id)
@@ -8,18 +9,37 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:id', (req, res, next) => {});
-
+// POST - adds a plant
 router.post('/', (req, res, next) => {
+  const newMyPlant = req.body;
   myPlants
-    .addMyPlant(req.body)
+    .addMyPlant(newMyPlant)
     .then((newPlant) => res.status(201).json(newPlant))
     .catch(next);
 });
 
-router.put('/:id', (req, res, next) => {});
+// PUT - updated day of the week for a plant
+router.put('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const updatedPlant = req.body;
+  myPlants
+    .updateMyPlant(id, updatedPlant)
+    .then((updatedPlant) =>
+      res.status(201).json({ message: 'updated plant', updatedPlant })
+    )
+    .catch(next);
+});
 
-router.delete('/:id', (req, res, next) => {});
+// DELETE - removes a plant
+router.delete('/:id', (req, res, next) => {
+  const { id } = req.params;
+  myPlants
+    .removeMyPlant(id)
+    .then((removedPlant) =>
+      res.status(200).json({ message: 'plant removed', removedPlant })
+    )
+    .catch(next);
+});
 
 // Error handling middleware
 router.use((err, req, res, next) => {
