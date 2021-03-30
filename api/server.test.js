@@ -50,34 +50,6 @@ beforeAll(async () => {
         expect(user).toMatchObject({ user_id: 1, name: "juan", email: "juan@juan.com", phone_number: "5205551234"})
       })
     })
-
-    describe('[GET] /api/users', () => {
-      it('responds with the proper status code and message on not-logged-in user', async () => {
-        const res = await request(server).get('/api/users')
-        expect(res.status).toBe(401)
-        expect(res.body.message).toMatch('token required')
-      }, 500)
-
-      it('shows error message of "invalid credentials" if not verified', async () => {
-        await db('users').insert({email: "katie@kt.com", password: "1234"})
-        let res = await request(server).post('/api/auth/login')
-        .send({ email: 'katie@kt.com', password: '1234' })
-        expect(res.body.message).toMatch('invalid credentials')
-      })
-    })
-
-    describe('[GET] /api/my-plants', () => {
-      it('responds with the proper status code and message on not-logged-in user', async () => {
-        const res = await request(server).get('/api/my-plants')
-        expect(res.status).toBe(401)
-        expect(res.body.message).toMatch('token required')
-      }, 500)
-      it('shows error message of "invalid credentials" if not verified', async () => {
-        await db('users').insert({email: "katie@kt.com", password: "1234"})
-        let res = await request(server).post('/api/auth/login')
-        .send({ email: 'katie@kt.com', password: '1234' })
-        expect(res.body.message).toMatch('invalid credentials')
-      })
-    })
+ 
 
     })

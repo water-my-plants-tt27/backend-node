@@ -2,7 +2,7 @@ const db = require ('../../database/dbConfig');
 
 function get() {
     return db ('users')
-    .select ('user_id', 'name', 'email')
+    .select ('user_id', 'name', 'phone_number', 'email')
   
 }
 
@@ -25,12 +25,18 @@ async function add(user) {
     return getById(id)
 }
 
+async function updateUser(id, updatedUser) {
+    await db('user').where('user_id', id).update(updatedUser);
+    return getById(id);
+  }
+
 function remove(id){
     return db('users').where({id}).del();
 }
 
 module.exports = {
     remove,
+    updateUser,
     add,
     getById,
     getBy,
