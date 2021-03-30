@@ -58,8 +58,8 @@ router.post("/register", (req, res) => {
   function buildToken(user) {
     const payload = {
       // claims
-      id: user.id,
-      name: user.name,
+      user_id: user.id,
+      email: user.name,
     }
     const config = {
       expiresIn: '1d',
