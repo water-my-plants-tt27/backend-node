@@ -72,8 +72,8 @@ exports.up = async (knex) => {
 
 exports.down = async (knex) => {
   await knex.schema
-    .dropTableIfExists('week_days')
     .dropTableIfExists('my_plants')
+    .dropTableIfExists('week_days')
     .dropTableIfExists('plants')
     .dropTableIfExists('light')
     .dropTableIfExists('water_schedule')
