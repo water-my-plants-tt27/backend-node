@@ -1,5 +1,3 @@
-// const jwt = require('jsonwebtoken')
-// const { JWT_SECRET } = require("../secrets"); 
 const User = require('./user-model');
 
 // Email is free
