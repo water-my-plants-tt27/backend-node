@@ -1,10 +1,17 @@
-// TO DO - get validatePlantId function working
-const validatePlantId = (req, res, next) => {
-  const id = req.params.id;
-  if (!id) {
-    res.status(404).json({ message: `plant id not found` });
-  } else {
-    next();
+const Plants = require('./plants-model');
+
+const validatePlantId = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const [plant] = await Plants.getPlantById(id);
+    if (!plant) {
+      res.status(404).json({ message: 'plant not found' });
+    } else {
+      req.plant = plant;
+      next();
+    }
+  } catch (err) {
+    next(err);
   }
 };
 
