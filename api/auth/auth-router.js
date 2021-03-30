@@ -31,10 +31,10 @@ router.post("/register", (req, res) => {
   });
   
   router.post("/login", (req, res) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
   
     if (isValid(req.body)) {
-      Users.findBy({ name: name })
+      Users.getBy({ email: email })
         .then(([user]) => {
           // compare the password the hash stored in the database
           if (user && bcryptjs.compareSync(password, user.password)) {
