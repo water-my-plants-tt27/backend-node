@@ -1,43 +1,39 @@
-const db = require ('../../database/dbConfig');
+const db = require('../../database/dbConfig');
 
 function get() {
-    return db ('users')
-    .select ('user_id', 'name', 'phone_number', 'email')
-  
+  return db('users').select('user_id', 'name', 'phone_number', 'email');
 }
 
 function getBy(filter) {
-    return db('users')
+  return db('users')
     .select('user_id', 'email', 'password')
-    .where('email', filter)
+    .where('email', filter);
 }
 
 function getById(id) {
-    return db('users')
-    .where('user_id', id)
-    .first()
+  return db('users').where('user_id', id).first();
 }
 
 async function add(user) {
-    const [id] = await db('users')
+  const [id] = await db('users')
     .select('user_id', 'email', 'phone_number', 'password')
-    .insert(user, 'user_id')
-    return getById(id)
+    .insert(user, 'user_id');
+  return getById(id);
 }
 
 async function updateUser(id, updatedUser) {
-    await db('user').where('user_id', id).update(updatedUser);
-    return getById(id);
-  }
+  await db('users').where('user_id', id).update(updatedUser);
+  return getById(id);
+}
 
-function remove(id){
-    return db('users').where({id}).del();
+function remove(id) {
+  return db('users').where({ id }).del();
 }
 module.exports = {
-    remove,
-    updateUser,
-    add,
-    getById,
-    getBy,
-    get,
-}
+  remove,
+  updateUser,
+  add,
+  getById,
+  getBy,
+  get,
+};
