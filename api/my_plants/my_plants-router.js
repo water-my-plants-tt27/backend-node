@@ -25,7 +25,7 @@ router.put('/:id', (req, res, next) => {
   myPlants
     .updateMyPlant(id, updatedPlant)
     .then((updatedPlant) =>
-      res.status(201).json({ message: 'updated plant', updatedPlant })
+      res.status(200).json({ message: 'updated plant', updatedPlant })
     )
     .catch(next);
 });
@@ -36,7 +36,7 @@ router.delete('/:id', (req, res, next) => {
   myPlants
     .removeMyPlant(id)
     .then((removedPlant) =>
-      res.status(200).json({ message: 'plant removed', removedPlant })
+      res.status(410).json({ message: 'plant removed', removedPlant })
     )
     .catch(next);
 });
