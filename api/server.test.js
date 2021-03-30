@@ -50,6 +50,4 @@ beforeAll(async () => {
         expect(user).toMatchObject({ user_id: 1, name: "juan", email: "juan@juan.com", phone_number: "5205551234"})
       })
     })
- 
-
     })
