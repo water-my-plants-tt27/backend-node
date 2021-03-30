@@ -4,6 +4,8 @@ exports.seed = function (knex) {
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex('my_plants').insert([{ user_id: 1, plant_id: 1 }]);
+      return knex('my_plants').insert([
+        { user_id: 1, plant_id: 1, week_day_id: 1 },
+      ]);
     });
 };

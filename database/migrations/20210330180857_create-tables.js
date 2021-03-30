@@ -37,6 +37,10 @@ exports.up = async (knex) => {
         .onDelete('CASCADE');
       tbl.string('plant_image').notNullable();
     })
+    .createTable('week_days', (tbl) => {
+      tbl.increments('week_day_id');
+      tbl.string('week_day_name');
+    })
     .createTable('my_plants', (tbl) => {
       tbl.increments('my_plant_id');
       tbl
@@ -55,11 +59,20 @@ exports.up = async (knex) => {
         .inTable('plants')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+      tbl
+        .integer('week_day_id')
+        .unsigned()
+        .notNullable()
+        .references('week_day_id')
+        .inTable('week_days')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     });
 };
 
 exports.down = async (knex) => {
   await knex.schema
+    .dropTableIfExists('week_days')
     .dropTableIfExists('my_plants')
     .dropTableIfExists('plants')
     .dropTableIfExists('light')
