@@ -6,6 +6,7 @@ function getPlants() {
       'plant_id',
       'plant_name',
       'species_name',
+      'water_id',
       'water_schedule',
       'light_level',
       'plant_image'
