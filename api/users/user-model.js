@@ -25,12 +25,18 @@ async function add(user) {
     return getById(id)
 }
 
+async function updateUser(id, updatedUser) {
+    await db('users').where('user_id', id).update(updatedUser);
+    return getById(id);
+  }
+
 function remove(id){
     return db('users').where({id}).del();
 }
 
 module.exports = {
     remove,
+    updateUser,
     add,
     getById,
     getBy,
