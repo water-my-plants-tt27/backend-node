@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const router = require('express').Router();
 
 const { jwtSecret } = require('../../config/secrets');
-
 const Users = require('../users/user-model');
 const { isValid } = require('../users/users-services.js');
 const { checkPayload } = require('./authMiddleware');
@@ -43,6 +42,7 @@ router.post(
   '/login',
   checkEmailExists,
   checkPasswordExists,
+
   async (req, res, next) => {
     const { email, password } = req.body;
 

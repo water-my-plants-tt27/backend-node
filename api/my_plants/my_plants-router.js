@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const myPlants = require('./my_plants-model');
+const { restricted } = require('../auth/authMiddleware');
 
 // GET - returns all my_plants from a user
-router.get('/:id', (req, res, next) => {
+router.get('/:id',restricted, (req, res, next) => {
   myPlants
     .getMyPlants(req.params.id)
     .then((plants) => res.status(200).json(plants))
@@ -10,7 +11,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - adds a plant
-router.post('/', (req, res, next) => {
+router.post('/',restricted, (req, res, next) => {
   const newMyPlant = req.body;
   myPlants
     .addMyPlant(newMyPlant)
@@ -19,7 +20,7 @@ router.post('/', (req, res, next) => {
 });
 
 // PUT - updated day of the week for a plant
-router.put('/:id', (req, res, next) => {
+router.put('/:id', restricted, (req, res, next) => {
   const { id } = req.params;
   const updatedPlant = req.body;
   myPlants
@@ -31,7 +32,7 @@ router.put('/:id', (req, res, next) => {
 });
 
 // DELETE - removes a plant
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', restricted, (req, res, next) => {
   const { id } = req.params;
   myPlants
     .removeMyPlant(id)
