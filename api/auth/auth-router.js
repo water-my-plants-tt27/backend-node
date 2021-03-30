@@ -62,30 +62,6 @@ router.post(
   }
 );
 
-// const { email, password } = req.body;
-// if (isLoginValid(req.body)) {
-//   Users.getBy({ email: email })
-//     .then(([user]) => {
-//       // compare the password the hash stored in the database
-//       if (user && bcryptjs.compareSync(password, user.password)) {
-//         const token = makeToken(user);
-//         res.status(200).json({
-//           email: user.email,
-//           password: user.password,
-//           token,
-//         });
-//       } else {
-//         res.status(401).json({ message: 'try again' });
-//       }
-//     })
-//     .catch((error) => {
-//       res.status(500).json({ message: error.message });
-//     });
-// } else {
-//   res.status(400).json({
-//     message: 'please provide email and password ',
-//   });
-// }
 
 function makeToken(user) {
   const payload = {
