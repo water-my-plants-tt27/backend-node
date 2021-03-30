@@ -1,7 +1,17 @@
 const db = require('../../database/dbConfig');
 
 function getPlants() {
-  return db('plants');
+  return db('plants as p')
+    .select(
+      'plant_id',
+      'plant_name',
+      'species_name',
+      'water_schedule',
+      'light_level',
+      'plant_image'
+    )
+    .join('water_schedule as ws', 'ws.water_id', 'p.water_id')
+    .join('light as l', 'l.light_id', 'p.light_id');
 }
 
 function getPlantById(id) {
