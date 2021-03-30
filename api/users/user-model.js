@@ -2,8 +2,8 @@ const db = require ('../../database/dbConfig');
 
 function get() {
     return db ('users')
-    .select ('user_id', 'email')
-    .orderby('user_id')
+    .select ('user_id', 'name', 'email')
+  
 }
 
 function getBy(filter) {
