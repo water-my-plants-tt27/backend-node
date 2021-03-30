@@ -9,7 +9,6 @@ function getMyPlants(id) {
       'user_id',
       'plant_name',
       'species_name',
-      'water_id',
       'water_schedule',
       'light_level',
       'plant_image',
@@ -17,7 +16,7 @@ function getMyPlants(id) {
     )
     .join('plants as p', 'p.plant_id', 'mp.plant_id')
     .join('week_days as wd', 'wd.week_day_id', 'mp.week_day_id')
-    .innerJoin('water_schedule as ws', 'ws.water_id', 'p.water_id')
+    .join('water_schedule as ws', 'ws.water_id', 'p.water_id')
     .join('light as l', 'l.light_id', 'p.light_id');
 }
 
