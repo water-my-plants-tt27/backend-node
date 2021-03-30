@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../../config/secrets');
 
-const restricted = async (req, res, next) => {
+const restricted = (req, res, next) => {
   const token = req.headers.authorization;
+  console.log(req.headers.authorization)
   if (!token) {
     res.status(401).json('token required');
   } else {
