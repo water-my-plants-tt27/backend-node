@@ -33,7 +33,6 @@ async function updateUser(id, updatedUser) {
 function remove(id){
     return db('users').where({id}).del();
 }
-
 module.exports = {
     remove,
     updateUser,
