@@ -44,13 +44,11 @@ router.post("/login", (req, res) => {
 
   if (isValid(req.body)) {
     Users.getBy({ email: email })
-    //why is it in this array?
       .then(([user]) => {
         // compare the password the hash stored in the database
         if (user && bcryptjs.compareSync(password, user.password)) {
           const token = makeToken(user)
           res.status(200).json({             
-          message: `Hello, ${user.name}`,
           name: user.name,
           email: user.email,
           phone_number: user.phone_number,
