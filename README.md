@@ -1,6 +1,7 @@
 # backend-node
 
-API documentation
+**API documentation**
+
 BaseURL:  https://watermyplantsapi.herokuapp.com/api
 
 List of Endpoints:
@@ -46,6 +47,7 @@ username: "test@gmail.com",
 password: "testPassword"
 }
 
+
 **Users**
 
 BaseURL/users (GET) - returns all users
@@ -59,6 +61,7 @@ Parameters:
 | name         | string  | yes      | The name of the user         |
 | phone_number | string  | yes      | The phone number of the user |
 | email        | string  | yes      | The email of the user        |
+
 
 
 **Plants**
@@ -82,6 +85,7 @@ Parameters:
 | water_schedule | string  | yes      | frequency of the water schedule |
 | light_level    | string  | yes      | light level                     |
 | plant_image    | string  | yes      | Image of the plant              |
+
 
 
 **My Plants**
