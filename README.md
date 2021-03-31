@@ -5,7 +5,7 @@ BaseURL:  https://watermyplantsapi.herokuapp.com/api
 
 List of Endpoints:
 
-Users (auth)
+**Users (auth)**
 
 BaseURL/auth/register (POST) - register a user
 
@@ -28,6 +28,7 @@ phone_number: 'testPhoneNumber',
 password: 'testPassword',
 }
 
+
 BaseURL/auth/login (POST) - login a user
 
 (test user is in the example)
@@ -45,7 +46,7 @@ username: "test@gmail.com",
 password: "testPassword"
 }
 
-Users
+**Users**
 
 BaseURL/users (GET) - returns all users
 
@@ -59,7 +60,8 @@ Parameters:
 | phone_number | string  | yes      | The phone number of the user |
 | email        | string  | yes      | The email of the user        |
 
-Plants
+
+**Plants**
 
 BaseURL/plants (GET) - returns all plants
 
@@ -81,7 +83,8 @@ Parameters:
 | light_level    | string  | yes      | light level                     |
 | plant_image    | string  | yes      | Image of the plant              |
 
-My Plants
+
+**My Plants**
 
 BaseURL/my-plants/:id (GET) - returns all my_plants from a user
 
