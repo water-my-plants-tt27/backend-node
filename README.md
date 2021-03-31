@@ -18,7 +18,6 @@ Parameters:
 | password     | string | yes      |
 
 Example of what to use:
-
 {
 name: 'testName',
 email: 'test@gmail.com',
@@ -36,7 +35,6 @@ Parameters:
 | password | string | yes      |
 
 Example of what to use:
-
 {
 username: "test@gmail.com",
 password: "testPassword"
