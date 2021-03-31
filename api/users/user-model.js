@@ -8,7 +8,7 @@ function get() {
 
 function getBy(filter) {
     return db('users')
-    .select('user_id', 'email', 'password')
+    .select('user_id', 'name', 'phone_number', 'email', 'password')
     .where('email', filter)
 }
 
