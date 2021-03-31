@@ -6,10 +6,12 @@ BaseURL:  https://watermyplantsapi.herokuapp.com/api
 List of Endpoints:
 
 Users (auth)
-BaseURL/auth/register (POST) - register a user
-(test user is in the example)
-Parameters:
 
+BaseURL/auth/register (POST) - register a user
+
+(test user is in the example)
+
+Parameters:
 | Name         | Type   | Required |
 | ------------ | ------ | -------- |
 | name         | string | yes      |
@@ -18,6 +20,7 @@ Parameters:
 | password     | string | yes      |
 
 Example of what to use:
+
 {
 name: 'testName',
 email: 'test@gmail.com',
@@ -26,25 +29,29 @@ password: 'testPassword',
 }
 
 BaseURL/auth/login (POST) - login a user
-(test user is in the example)
-Parameters:
 
+(test user is in the example)
+
+Parameters:
 | Name     | Type   | Required |
 | -------- | ------ | -------- |
 | email    | string | yes      |
 | password | string | yes      |
 
 Example of what to use:
+
 {
 username: "test@gmail.com",
 password: "testPassword"
 }
 
 Users
-BaseURL/users (GET) - returns all users
-BaseURL/users/:id (PUT) - updates a user
-Parameters:
 
+BaseURL/users (GET) - returns all users
+
+BaseURL/users/:id (PUT) - updates a user
+
+Parameters:
 | Name         | Type    | Required | Notes                        |
 | ------------ | ------- | -------- | ---------------------------- |
 | user_id      | integer | yes      | The id of the user           |
@@ -53,13 +60,18 @@ Parameters:
 | email        | string  | yes      | The email of the user        |
 
 Plants
-BaseURL/plants (GET) - returns all plants
-BaseURL/plants/:id (GET) - gets an individual plant
-BaseURL/plants (POST) - add a plant
-BaseURL/plants/:id (PUT) - update a plant
-BaseURL/plants/:id (DELETE) - delete a plant
-Parameters:
 
+BaseURL/plants (GET) - returns all plants
+
+BaseURL/plants/:id (GET) - gets an individual plant
+
+BaseURL/plants (POST) - add a plant
+
+BaseURL/plants/:id (PUT) - update a plant
+
+BaseURL/plants/:id (DELETE) - delete a plant
+
+Parameters:
 | Name           | Type    | Required | Notes                           |
 | -------------- | ------- | -------- | ------------------------------- |
 | plant_id       | integer | yes      | The id of the plant             |
@@ -70,12 +82,16 @@ Parameters:
 | plant_image    | string  | yes      | Image of the plant              |
 
 My Plants
-BaseURL/my-plants/:id (GET) - returns all my_plants from a user
-BaseURL/my-plants (POST) - adds a my_plant
-BaseURL/my-plants/:id (PUT) - updates a my_plant
-BaseURL/my-plants/:id (DELETE) - removes a my_plant
-Parameters:
 
+BaseURL/my-plants/:id (GET) - returns all my_plants from a user
+
+BaseURL/my-plants (POST) - adds a my_plant
+
+BaseURL/my-plants/:id (PUT) - updates a my_plant
+
+BaseURL/my-plants/:id (DELETE) - removes a my_plant
+
+Parameters:
 | Name           | Type    | Required | Notes                           |
 | -------------- | ------- | -------- | ------------------------------- |
 | my_plant_id    | integer | yes      | The id of my_plants             |
