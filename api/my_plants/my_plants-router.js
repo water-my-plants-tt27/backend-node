@@ -36,8 +36,7 @@ router.delete('/:id', (req, res, next) => {
   myPlants
     .removeMyPlant(id)
     .then((removedPlant) =>
-      res.json('Plant Deleted', removedPlant)
-      // res.status(410).json({ message: 'plant removed', removedPlant })
+      res.status(410).json({ message: 'plant removed', removedPlant })
     )
     .catch(next);
 });
