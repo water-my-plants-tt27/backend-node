@@ -34,10 +34,11 @@ async function updateMyPlant(id, updatedPlant) {
   return getMyPlantById(id);
 }
 
-async function removeMyPlant(id) {
-  const removedMyPlant = await getPlantById(id);
-  await db('my_plants').where('my_plant_id', id).del();
-  return removedMyPlant;
+function removeMyPlant(id) {
+  // const removedMyPlant = await getPlantById(id);
+  // await db('my_plants').where('my_plant_id', id).del();
+  // return removedMyPlant;
+  return db('my_plants').where({id}).del();
 }
 
 module.exports = {
