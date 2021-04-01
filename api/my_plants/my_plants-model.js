@@ -25,8 +25,8 @@ function getMyPlantById(my_plant_id) {
 }
 
 async function addMyPlant(newMyPlant) {
-  const [my_plant_id] = await db('my_plants').insert(newMyPlant, 'my_plant_id');
-  return getMyPlantById(my_plant_id);
+  const [id] = await db('my_plants').insert(newMyPlant, 'my_plant_id');
+  return getMyPlantById(id);
 }
 
 async function updateMyPlant(id, updatedPlant) {
