@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const myPlants = require('./my_plants-model');
-const { restricted } = require('../auth/authMiddleware');
 
 // GET - returns all my_plants from a user
-router.get('/:id',restricted, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   myPlants
     .getMyPlants(req.params.id)
     .then((plants) => res.status(200).json(plants))
@@ -11,7 +10,7 @@ router.get('/:id',restricted, (req, res, next) => {
 });
 
 // POST - adds a plant
-router.post('/',restricted, (req, res, next) => {
+router.post('/', (req, res, next) => {
   const newMyPlant = req.body;
   myPlants
     .addMyPlant(newMyPlant)
@@ -20,7 +19,7 @@ router.post('/',restricted, (req, res, next) => {
 });
 
 // PUT - updated day of the week for a plant
-router.put('/:id', restricted, (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   const { id } = req.params;
   const updatedPlant = req.body;
   myPlants
@@ -32,12 +31,13 @@ router.put('/:id', restricted, (req, res, next) => {
 });
 
 // DELETE - removes a plant
-router.delete('/:id', restricted, (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
   myPlants
     .removeMyPlant(id)
     .then((removedPlant) =>
-      res.status(410).json({ message: 'plant removed', removedPlant })
+      res.json('Plant Deleted', removedPlant)
+      // res.status(410).json({ message: 'plant removed', removedPlant })
     )
     .catch(next);
 });
